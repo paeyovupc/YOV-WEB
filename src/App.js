@@ -1,34 +1,21 @@
-import './App.css';
-import logo from "./imatges/fotoinici.svg"
-import './style/Home.css'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Record from './components/Record';
+import About from './components/About';
+import TTSGenerator from './components/TTSGenerator';
+import './styles/App.css';
 
 function App() {
   return (
-    
-    <div className="App">
-      <div className="logo">
-        <img src={logo} alt="Girl in a jacket" width="500px" height="500px"/>
-      </div>
-      <header className="App-header">
-
-        <p>
-          YOV 
-        </p>
-        <body>
-
-    </body>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HELLO WORLD
-        </a>
-      </header>
-      
-    </div>
-    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/record" element={<Record />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/tts-generator" element={<TTSGenerator />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
