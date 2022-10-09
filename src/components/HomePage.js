@@ -1,6 +1,7 @@
 import { HeaderOptions } from "./HeaderOptions";
 import "../style/HomePage.css";
 import foto_inicial from "../imatges/foto_inicial.svg";
+import { StartButton } from "./StartButton";
 
 export function HomePage() {
   return (
@@ -8,6 +9,7 @@ export function HomePage() {
       <header>
         <h1>Your Own Voice</h1>
       </header>
+      <HeaderOptions />
       <main>
         <p>
           Your Own Voice uses the Coqui open-source API for Text-to-Speech
@@ -22,7 +24,7 @@ export function HomePage() {
           alt="Foto de la homepage"
         ></img>
 
-        <HeaderOptions />
+        <StartButton />
       </main>
     </div>
   );
