@@ -13,8 +13,11 @@ html, body, #root {
  }
 
 .container {
-  margin: 1rem;
-  text-align: center;
+  padding: 1rem;
+  color: white;
+  background-image: linear-gradient( 89.8deg,  rgb(74, 8, 8) 4.7%, rgba(30,29,29,1) 78.3% );
+  height: 100%;
+  display: grid;
 }
 
 .text1 {
@@ -39,7 +42,7 @@ html, body, #root {
 }
 
 .site-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .nav ul {
@@ -64,4 +67,15 @@ html, body, #root {
 
 .nav li:hover {
   background-color: #777;
+}
+
+button {
+  color: white;
+  border-radius: 8px;
+  background-color: rgb(2, 73, 89);
+  padding: 8px;
+}
+
+button:hover {
+  background-color: rgb(15, 97, 116);
 }
