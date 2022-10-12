@@ -27,7 +27,6 @@ export default function TTSGenerator() {
         responseType: 'blob'
       })
       .then((res) => {
-        console.log(res.data); //, new Blob(res.data));
         const url = URL.createObjectURL(res.data);
         setAudioUrl(url);
       });
