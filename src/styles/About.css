@@ -1,0 +1,64 @@
+
+.about-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
+    display: grid;
+    justify-content: space-around;
+    margin: 20px
+}
+
+.about01 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+}
+
+.about02 {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    text-align: justify;
+    margin-inline: 80px;
+}
+
+.about03 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 3;
+    text-align: center;
+}
+
+.about04 {
+    text-align: center;
+    grid-column: 1;
+    grid-row: 4 / 8;
+}
+
+.about05 {
+    text-align: center;
+    grid-column: 2;
+    grid-row: 4 / 8;
+}
+
+.about06 {
+    text-align: center;
+    grid-column: 3;
+    grid-row: 4 / 8;
+}
+
+.card {
+    padding: 10px;
+    border-radius: 10px;
+    background: rgb(51, 48, 48);; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-inline: 15px;
+}
+  
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

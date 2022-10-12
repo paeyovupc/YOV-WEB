@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
-        Your <span className="text1">Own</span>Voice
+        Your <span className="orange-text">Own</span>Voice
       </Link>
       <ul>
         <CustomLink to="/tts-generator">TTS Generator</CustomLink>

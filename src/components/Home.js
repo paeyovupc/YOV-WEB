@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/foto_inicial.svg';
+import logo from '../images/home-image.svg';
 import '../styles/Home.css';
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <div className="home-grid">
       <div className="home01">
         <span className="title">
-          Your<span className="text1">Own</span>Voice
+          Your<span className="orange-text">Own</span>Voice
         </span>
       </div>
       <div className="home02">
@@ -25,7 +25,8 @@ export default function Home() {
       <div className="home04">
         <a href="/tts-generator">
           <button>
-            Start creating <br /> Your<span className="text1">Own</span>Voice
+            Start creating <br /> Your<span className="orange-text">Own</span>
+            Voice
           </button>
         </a>
       </div>

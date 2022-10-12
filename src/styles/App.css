@@ -20,7 +20,16 @@ html, body, #root {
   display: grid;
 }
 
-.text1 {
+.title {
+  font-size: 48px;
+}
+
+.subtitle {
+  font-size: 35px;
+  color:rgb(216, 95, 8)
+}
+
+.orange-text {
   color:rgb(216, 95, 8)
 }
 
