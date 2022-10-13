@@ -1,31 +1,34 @@
-import { HeaderOptions } from "./HeaderOptions";
+//import { HeaderOptions } from "./HeaderOptions";
 import "../style/HomePage.css";
-import foto_inicial from "../imatges/foto_inicial.svg";
-import { StartButton } from "./StartButton";
+import initialPhoto from "../imatges/foto_inicial.svg";
 
 export function HomePage() {
   return (
-    <div>
+    <div className="backgroundColor">
       <header>
-        <h1>Your Own Voice</h1>
+        <h1 className="bigText">
+          Your <span className="naranjito">Own </span>Voice
+        </h1>
       </header>
-      <HeaderOptions />
-      <main>
-        <p>
-          Your Own Voice uses the Coqui open-source API for Text-to-Speech
-          generation. The user can record their own voice or upload an audio
-          file and based on their selection can synthesise a provided text
-          input.
-        </p>
+      <p className="normalText">
+        Your Own Voice uses the Coqui open-source API for Text-to-Speech
+        generation. <br />
+        The user can record their own voice or upload an audio file and based on
+        their selection can synthesise a provided text input.
+      </p>
 
-        <img
-          src={foto_inicial}
-          className="foto_inicial"
-          alt="Foto de la homepage"
-        ></img>
+      <img
+        src={initialPhoto}
+        className="initialPhoto"
+        alt="Foto de la homepage"
+      ></img>
 
-        <StartButton />
-      </main>
+      {/* <StartButton />  */}
+      <button className="startButton">
+        {" "}
+        Start Creating <br />
+        Your <span className="naranjito">Own</span> Voice
+      </button>
     </div>
   );
 }

@@ -1,11 +1,75 @@
-.foto_inicial {
-    position: absolute;
-    right: 20px;
-    bottom: 100px;
-    width: 450px;
-    height: 360px;
+html,
+body,
+#root {
+  height: 100%;
 }
 
-.anotherColor{
-    color: #F26430;
+.backgroundColor {
+  background-color: rgb(77, 37, 180);
+}
+
+.initialPhoto {
+  position: absolute;
+  right: 20px;
+  bottom: 100px;
+  width: 450px;
+  height: 360px;
+}
+
+.normalText {
+  font-style: Light;
+  top: 194px;
+  left: px;
+  color: black;
+  width: 1070px;
+  height: auto;
+  position: absolute;
+  font-size: 24;
+  align-self: auto;
+  text-align: left;
+  font-family: 'Raleway';
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.bigText{
+  color: black;
+  font-family: 'Raleway';
+  height: auto;
+  position: absolute;
+  font-size: 100px;
+  align-self: auto;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Light;
+  text-align: center;
+  font-weight: 300;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.naranjito {
+  color: #f26430;
+}
+
+.startButton {
+  background-color: #024959;
+  border: 1px solid black;
+  font-weight: medium;
+  color: white;
+  transition-duration: 0.6s;
+  border-radius: 30px;
+  padding: 20px 32px;
+  margin: 5px;
+  position: absolute;
+  left: 240px;
+  bottom: 180px;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  background-color: #073865; /* Green */
+  color: white;
 }
