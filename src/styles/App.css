@@ -47,7 +47,7 @@ html, body, #root {
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .site-title {
@@ -78,13 +78,15 @@ html, body, #root {
   background-color: #777;
 }
 
-button {
+.button{
   color: white;
   border-radius: 8px;
   background-color: rgb(2, 73, 89);
   padding: 8px;
+  margin: 5px;
+  font-size: 15px;
 }
 
-button:hover {
+.button:hover {
   background-color: rgb(15, 97, 116);
 }

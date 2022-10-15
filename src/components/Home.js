@@ -24,7 +24,7 @@ export default function Home() {
       </div>
       <div className="home04">
         <a href="/tts-generator">
-          <button>
+          <button className="button">
             Start creating <br /> Your<span className="orange-text">Own</span>
             Voice
           </button>

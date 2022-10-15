@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { HiDownload } from 'react-icons/hi';
+import '../styles/TTSGenerator.css';
 
 export default function TTSGenerator() {
   const [models, setModels] = useState([]);
@@ -10,6 +12,7 @@ export default function TTSGenerator() {
   });
   const [text, setText] = useState('');
   const [audioUrl, setAudioUrl] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     async function getModels() {
@@ -22,14 +25,23 @@ export default function TTSGenerator() {
   }, []);
 
   const getTTSAudio = (data) => {
+    setLoader(true);
     axios
       .post(`${process.env.REACT_APP_API_URL}/tts`, data, {
         responseType: 'blob'
       })
       .then((res) => {
         const url = URL.createObjectURL(res.data);
+        setLoader(false);
         setAudioUrl(url);
       });
+  };
+
+  const downloadAudio = () => {
+    const element = document.createElement('a');
+    element.href = audioUrl;
+    element.download = 'yov-audio.wav';
+    element.click();
   };
 
   const handleChange = (e) => {
@@ -63,12 +75,22 @@ export default function TTSGenerator() {
   };
 
   const handleSubmit = (e) => {
+    if (
+      model.language === '' ||
+      model.dataset === '' ||
+      model.model_name === ''
+    ) {
+      alert(
+        'Language, Dataset and Model name are required to generate the output speech.'
+      );
+      e.preventDefault();
+      return;
+    }
     setAudioUrl(null);
     const data = {
       ...model,
       text: text
     };
-    console.log(data);
     getTTSAudio(data);
     e.preventDefault();
   };
@@ -77,74 +99,106 @@ export default function TTSGenerator() {
   const datasets = [...new Set(models.map((item) => item.dataset))];
   const model_names = [...new Set(models.map((item) => item.model_name))];
   return (
-    <div>
+    <div className="block">
+      <div className="subtitle">Text-to-speech generator</div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Language:
-          <select
-            name="language"
-            value={model.language}
-            onChange={handleChange}
-          >
-            <option value={undefined} />
-            {languages.map((language, index) => (
-              <option key={index}>{language}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Dataset:
-          <select name="dataset" value={model.dataset} onChange={handleChange}>
-            <option value={undefined} />
-            {datasets
-              .filter((d) =>
-                models.some(
-                  (m) => m.language === model.language && m.dataset === d
-                )
-              )
-              .map((dataset, index) => (
-                <option key={index}>{dataset}</option>
+        <div className="block">
+          <label>
+            Language:
+            <select
+              name="language"
+              value={model.language}
+              onChange={handleChange}
+            >
+              <option value={undefined} />
+              {languages.map((language, index) => (
+                <option key={index}>{language}</option>
               ))}
-          </select>
-        </label>
-        <label>
-          Model name:
-          <select
-            name="model_name"
-            value={model.model_name}
-            onChange={handleChange}
-          >
-            <option value={undefined} />
-            {model_names
-              .filter((name) =>
-                models.some(
-                  (m) =>
-                    m.language === model.language &&
-                    m.dataset === model.dataset &&
-                    m.model_name === name
+            </select>
+          </label>
+          <br />
+          <label>
+            Dataset:
+            <select
+              name="dataset"
+              value={model.dataset}
+              onChange={handleChange}
+            >
+              <option value={undefined} />
+              {datasets
+                .filter((d) =>
+                  models.some(
+                    (m) => m.language === model.language && m.dataset === d
+                  )
                 )
-              )
-              .map((name, index) => (
-                <option key={index}>{name}</option>
-              ))}
-          </select>
-        </label>
-        <div>
-          Enter some text to generate speech:
-          <div>
+                .map((dataset, index) => (
+                  <option key={index}>{dataset}</option>
+                ))}
+            </select>
+          </label>
+          <br />
+          <label>
+            Model name:
+            <select
+              name="model_name"
+              value={model.model_name}
+              onChange={handleChange}
+            >
+              <option value={undefined} />
+              {model_names
+                .filter((name) =>
+                  models.some(
+                    (m) =>
+                      m.language === model.language &&
+                      m.dataset === model.dataset &&
+                      m.model_name === name
+                  )
+                )
+                .map((name, index) => (
+                  <option key={index}>{name}</option>
+                ))}
+            </select>
+          </label>
+          <div className="block">
+            <span>Enter some text to generate speech:</span>
+            <br />
             <textarea
               type="text"
-              name="name"
               value={text}
-              cols="20"
-              rows="2"
+              cols="70"
+              rows="5"
               onChange={(e) => setText(e.target.value)}
             />
           </div>
+          <div>
+            <button
+              type="button"
+              className="button"
+              onClick={(e) => setText('')}
+            >
+              Clear text
+            </button>
+            <input
+              type="submit"
+              className="button"
+              value="Submit"
+              style={{ fontWeight: 'bold' }}
+            />
+          </div>
         </div>
-        <input type="submit" value="Submit" />
       </form>
-      {audioUrl && <audio src={audioUrl} controls></audio>}
+      {loader && <span className="loader" />}
+      {audioUrl && (
+        <>
+          <span>Generated audio:</span>
+          <div className="result">
+            <audio src={audioUrl} controls></audio>
+            <button className="icon" onClick={downloadAudio}>
+              <HiDownload size={30} />
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
