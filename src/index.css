@@ -5,6 +5,8 @@ body {
     "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* aixo s ha de treure*/
+  background-color: grey; 
 }
 
 code {
