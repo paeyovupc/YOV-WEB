@@ -29,11 +29,13 @@ export default function About() {
         <div className="card">
           <b>Web Development Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The Web Development team is constituted <br/>by: Gabriel Gómez, Sergi Espinosa, 
+            Roxana Ancuta. The technology used is Javascript/React 
+            and HTML/CSS. This team was responsible for the front end and leaving 
+            back end ready to conect.
+            <br/>
+            <br/>
+            <br/>
           </p>
           <img src={webdev_img} alt="web-development" width={100} />
         </div>
@@ -42,11 +44,10 @@ export default function About() {
         <div className="card">
           <b>TTS & Back-end Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The TTS and Back-end team is constituted<br/>by: Raquel Panadero, Javier Fernández, 
+            Emiliano Macías. The technology used is CoquiTTS and GlowTTS models. This team 
+            is responsible of taking the audios of the Data base and developing models to 
+            be able to use as a TTS and connecting it through backend with the page.
           </p>
           <img src={tts_img} alt="text-to-speech" width={100} />
         </div>
@@ -55,11 +56,12 @@ export default function About() {
         <div className="card">
           <b>Database Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The Database team is constituted <br/>by: Lluc Ricart, Pablo Mecho, Helena Fitó. 
+            The technology used where data bases with at least 1 hour of data to be able 
+            record a new voice with the same frases. This team is responsible for making 
+            the audio data base available to work for TTS.
+            <br/>
+            <br/>
           </p>
           <img src={database_img} alt="database" width={100} />
         </div>
