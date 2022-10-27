@@ -27,39 +27,49 @@ export default function About() {
       </div>
       <div className="about04">
         <div className="card">
-          <b>Web Development Team</b>
+          <b style={{ fontSize: '18px' }}>Web Development Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The Web Development team is constituted by: <br />
+            Gabriel Gómez, Sergi Espinosa and Roxana Ancuta. <br />
+            <br />
+            The main technologies used are React, a front-end <br />
+            JavaScript library for building user interfaces, and CSS. <br />
+            <br />
+            This team was responsible of implementing a user-friendly and
+            intuitive Web application that allows the user to synthesize a
+            personalized text.
           </p>
           <img src={webdev_img} alt="web-development" width={100} />
         </div>
       </div>
       <div className="about05">
         <div className="card">
-          <b>TTS & Back-end Team</b>
+          <b style={{ fontSize: '18px' }}>TTS & Back-end Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The TTS and Back-end team is constituted by: <br />
+            Raquel Panadero, Javier Fernández and Emiliano Macías. <br />
+            <br />
+            The technologies used are based on CoquiTTS, <br />
+            a library for advanced Text-to-Speech generation. <br />
+            <br />
+            This team is responsible of training different models and <br />
+            developing an API to connect the back-end with the front-end.
           </p>
           <img src={tts_img} alt="text-to-speech" width={100} />
         </div>
       </div>
       <div className="about06">
         <div className="card">
-          <b>Database Team</b>
+          <b style={{ fontSize: '18px' }}>Database Team</b>
           <p>
-            Nunc congue efficitur felis non fermentum. Cras luctus luctus mi et
-            tincidunt. Phasellus congue faucibus mauris, sit amet rhoncus magna
-            scelerisque et. Duis convallis elit vestibulum, luctus erat id,
-            tincidunt risus. Mauris gravida cursus nunc. Donec non hendrerit
-            arcu, nec vulputate urna. Mauris in quam.
+            The Database team is constituted by: <br />
+            Lluc Ricart, Pablo Mecho and Helena Fitó. <br />
+            <br />
+            The technologies used are Python, data bases with at least 1 hour of
+            data to be able record a new voice with the same frases. <br />
+            <br />
+            This team is responsible of making the audio data base available to
+            work for TTS.
           </p>
           <img src={database_img} alt="database" width={100} />
         </div>

@@ -11,7 +11,7 @@ export default function Home() {
         </span>
       </div>
       <div className="home02">
-        <img src={logo} alt="home tts icon" height={400} />
+        <img src={logo} alt="home tts icon" height={450} />
       </div>
       <div className="home03">
         YourOwnVoice uses{' '}
@@ -24,7 +24,7 @@ export default function Home() {
       </div>
       <div className="home04">
         <a href="/tts-generator">
-          <button className="button">
+          <button className="button" style={{ fontSize: '18px' }}>
             Start creating <br /> Your<span className="orange-text">Own</span>
             Voice
           </button>
