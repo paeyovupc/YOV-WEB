@@ -8,13 +8,22 @@ was the easier one.*
 
 ## Commands
 
-The commands are the following:
+To enable the port forwarding:
 ```bash
 # localhost/loopback
 sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 3000
 
 # external
 sudo iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 3000
+```
+
+To disable the port forwarding:
+```bash
+# localhost/loopback
+sudo iptables -t nat -D OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 3000
+
+# external
+sudo iptables -t nat -D PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 3000
 ```
 
 ## Disabling apache server
