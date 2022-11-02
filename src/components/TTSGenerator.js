@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { HiDownload } from 'react-icons/hi';
 import '../styles/TTSGenerator.css';
 
-export default function TTSGenerator() {
+export default function TTSGenerator({ user }) {
+  const navigate = useNavigate();
   const [models, setModels] = useState([]);
   const [model, setModel] = useState({
     language: '',
@@ -11,10 +13,15 @@ export default function TTSGenerator() {
     model_name: ''
   });
   const [text, setText] = useState('');
+  const [file, setFile] = useState(null);
   const [audioUrl, setAudioUrl] = useState(null);
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    if (user == null) {
+      navigate('/login');
+    }
+
     async function getModels() {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/all_models`
@@ -26,8 +33,16 @@ export default function TTSGenerator() {
 
   const getTTSAudio = (data) => {
     setLoader(true);
+    const formData = new FormData();
+    if (file) {
+      formData.append('file', file);
+    }
+    formData.append('language', data.language);
+    formData.append('dataset', data.dataset);
+    formData.append('model_name', data.model_name);
+    formData.append('text', data.text);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/tts`, data, {
+      .post(`${process.env.REACT_APP_API_URL}/tts`, formData, {
         responseType: 'blob'
       })
       .then((res) => {
@@ -101,6 +116,16 @@ export default function TTSGenerator() {
   return (
     <div className="block">
       <div className="subtitle">Text-to-speech generator</div>
+      <p
+        style={{
+          background: 'rgba(155, 155, 155, 0.5)',
+          padding: '2px',
+          borderRadius: '4px'
+        }}
+      >
+        Note: Use <span>multilingual/multi-dataset/your_tts</span> and upload an
+        audio with your own voice to generate personalized voices
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="block">
           <label>
@@ -159,6 +184,18 @@ export default function TTSGenerator() {
                 ))}
             </select>
           </label>
+          {model.model_name === 'your_tts' && (
+            <label>
+              Upload your own voice:
+              <div>
+                <input
+                  type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  style={{ fontSize: '15px' }}
+                />
+              </div>
+            </label>
+          )}
           <div className="block">
             <span>Enter some text to generate speech:</span>
             <br />

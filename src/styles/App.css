@@ -48,10 +48,11 @@ html, body, #root {
   align-items: stretch;
   gap: 2rem;
   padding: 0.5rem 1rem;
+  font-size: 1.1rem;
 }
 
 .site-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .nav ul {
@@ -89,4 +90,30 @@ html, body, #root {
 
 .button:hover {
   background-color: rgb(15, 97, 116);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color:rgb(216, 95, 8);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.mini-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background-color:rgb(216, 95, 8);
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
 }
