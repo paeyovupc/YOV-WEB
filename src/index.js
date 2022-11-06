@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
@@ -11,4 +12,15 @@ root.render(
       <App />
     </BrowserRouter>
   </React.StrictMode>
+=======
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { HomePage } from "./components/HomePage";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  
+    <HomePage />
+>>>>>>> master
 );
