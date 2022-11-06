@@ -54,21 +54,36 @@ export default function TrainModels({ user }) {
           width: '80%'
         }}
       >
-        <div className="card" style={{ width: '60%' }}>
-          <b style={{ fontSize: '18px' }}>Your current models</b>
-          <ul>
-            {models.map((model) => (
-              <li key={model}>{model}</li>
-            ))}
-          </ul>
+        <div className="card" style={{ width: '55%' }}>
+          <b style={{ fontSize: '20px' }}>Your current models</b>
+          {models.length !== 0 && (
+            <ul>
+              {models.map((model) => (
+                <li
+                  style={{ fontSize: '16px', marginBottom: '10px' }}
+                  key={model}
+                >
+                  {model}
+                </li>
+              ))}
+            </ul>
+          )}
+          {models.length === 0 && (
+            <p>[INFO]: Currently, you have no personalized models trained</p>
+          )}
         </div>
-        <div className="card" style={{ width: '40%' }}>
-          <b style={{ fontSize: '18px' }}>Train new model</b>
+        <div className="card" style={{ width: '45%' }}>
+          <b style={{ fontSize: '20px' }}>Train new model</b>
           <div>
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+            <input
+              style={{ fontSize: '15px' }}
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
             <button className="button" onClick={onFileUpload}>
               Upload!
             </button>
+            <p>Note: The database name corresponds to the .zip filename</p>
           </div>
         </div>
       </div>

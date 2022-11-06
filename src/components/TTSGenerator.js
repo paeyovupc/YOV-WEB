@@ -24,7 +24,7 @@ export default function TTSGenerator({ user }) {
 
     async function getModels() {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/all_models`
+        `${process.env.REACT_APP_API_URL}/all_models?user=${user}`
       );
       setModels(response.data);
     }
