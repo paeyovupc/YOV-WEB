@@ -1,0 +1,26 @@
+.home-grid {
+    display: grid;
+    justify-content: space-around;
+    margin: 50px
+}
+  
+.home01 {
+    grid-column: 1;
+    grid-row: 1 / 2;
+}
+
+.home02 {
+    grid-column: 2;
+    grid-row: 1 / 6;
+}
+
+.home03 {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 20px;
+}
+
+.home04 {
+    grid-column: 1;
+    grid-row: 3;
+}
