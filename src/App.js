@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import TTSGenerator from './components/TTSGenerator';
 import './styles/App.css';
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(null);
 
   return (

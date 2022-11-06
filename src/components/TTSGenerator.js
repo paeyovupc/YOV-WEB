@@ -29,7 +29,7 @@ export default function TTSGenerator({ user }) {
       setModels(response.data);
     }
     getModels();
-  }, []);
+  }, [navigate, user]);
 
   const getTTSAudio = (data) => {
     setLoader(true);
