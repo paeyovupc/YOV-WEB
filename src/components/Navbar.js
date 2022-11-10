@@ -8,10 +8,11 @@ export default function Navbar() {
         Your <span className="orange-text">Own</span>Voice
       </Link>
       <ul>
-        <CustomLink to="/tts-generator">TTS Generator</CustomLink>
-        <CustomLink to="/record">Personalized TTS</CustomLink>
         <CustomLink to="/about">About Us</CustomLink>
         <CustomLink to="/technologies-used">Technologies Used</CustomLink>
+        <CustomLink to="/login">
+          <b>Log in</b>
+        </CustomLink>
       </ul>
     </nav>
   );

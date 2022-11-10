@@ -20,41 +20,53 @@ export default function About() {
       </div>
       <div className="about04">
         <div className="card">
-          <b>Web Development Team</b>
+          <b style={{ fontSize: '18px' }}>Web Development Team</b>
           <p>
-            The Web Development team is constituted <br/>by: Gabriel Gómez, Sergi Espinosa, 
-            Roxana Ancuta. The technology used is Javascript/React 
-            and HTML/CSS. This team was responsible for the front end and leaving 
-            back end ready to conect.
-            <br/>
-            <br/>
-            <br/>
+
+            The Web Development team is constituted by: <br />
+            Gabriel Gómez, Sergi Espinosa and Roxana Ancuta. <br />
+            <br />
+            The main technologies used are React, a front-end <br />
+            JavaScript library for building user interfaces, and CSS. <br />
+            <br />
+            This team was responsible of implementing a user-friendly and
+            intuitive Web application that allows the user to synthesize a
+            personalized text.
+
           </p>
           <img src={webdev_img} alt="web-development" width={100} />
         </div>
       </div>
       <div className="about05">
         <div className="card">
-          <b>TTS & Back-end Team</b>
+          <b style={{ fontSize: '18px' }}>TTS & Back-end Team</b>
           <p>
-            The TTS and Back-end team is constituted<br/>by: Raquel Panadero, Javier Fernández, 
-            Emiliano Macías. The technology used is CoquiTTS and GlowTTS models. This team 
-            is responsible of taking the audios of the Data base and developing models to 
-            be able to use as a TTS and connecting it through backend with the page.
+
+            The TTS and Back-end team is constituted by: <br />
+            Raquel Panadero, Javier Fernández and Emiliano Macías. <br />
+            <br />
+            The technologies used are based on CoquiTTS, <br />
+            a library for advanced Text-to-Speech generation. <br />
+            <br />
+            This team is responsible of training different models and <br />
+            developing an API to connect the back-end with the front-end.
           </p>
           <img src={tts_img} alt="text-to-speech" width={100} />
         </div>
       </div>
       <div className="about06">
         <div className="card">
-          <b>Database Team</b>
+          <b style={{ fontSize: '18px' }}>Database Team</b>
           <p>
-            The Database team is constituted <br/>by: Lluc Ricart, Pablo Mecho, Helena Fitó. 
-            The technology used where data bases with at least 1 hour of data to be able 
-            record a new voice with the same frases. This team is responsible for making 
-            the audio data base available to work for TTS.
-            <br/>
-            <br/>
+
+            The Database team is constituted by: <br />
+            Lluc Ricart, Pablo Mecho and Helena Fitó. <br />
+            <br />
+            The technologies used are Python, data bases with at least 1 hour of
+            data to be able record a new voice with the same frases. <br />
+            <br />
+            This team is responsible of making the audio data base available to
+            work for TTS.
           </p>
           <img src={database_img} alt="database" width={100} />
         </div>

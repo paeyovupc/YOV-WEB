@@ -1,8 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../images/home-image.svg';
 import '../styles/Home.css';
 
 export default function Home() {
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="home-grid">
       <div className="home01">
@@ -11,7 +17,7 @@ export default function Home() {
         </span>
       </div>
       <div className="home02">
-        <img src={logo} alt="home tts icon" height={400} />
+        <img src={logo} alt="home tts icon" height={450} />
       </div>
       <div className="home03">
         YourOwnVoice uses{' '}
@@ -23,12 +29,14 @@ export default function Home() {
         the desired speech model and synthesise a personalized input text.
       </div>
       <div className="home04">
-        <a href="/tts-generator">
-          <button>
-            Start creating <br /> Your<span className="orange-text">Own</span>
-            Voice
-          </button>
-        </a>
+        <button
+          className="button"
+          style={{ fontSize: '18px' }}
+          onClick={goToLogin}
+        >
+          Start creating <br /> Your<span className="orange-text">Own</span>
+          Voice
+        </button>
       </div>
     </div>
   );
