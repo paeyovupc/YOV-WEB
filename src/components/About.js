@@ -11,16 +11,9 @@ export default function About() {
         <span className="subtitle">About Us</span>
       </div>
       <div className="about02">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum." "Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
+        The team is made of 10 engineering students of Universitat Politècnica de Catalunya. We are a group of developers that have the idea 
+        of developing a TTS so we divided in 3 main groups which are Web Development Team, TTS & Back-end Team and Database Team.
+
       </div>
       <div className="about03">
         <span className="subtitle">Our Team</span>
@@ -29,6 +22,7 @@ export default function About() {
         <div className="card">
           <b style={{ fontSize: '18px' }}>Web Development Team</b>
           <p>
+
             The Web Development team is constituted by: <br />
             Gabriel Gómez, Sergi Espinosa and Roxana Ancuta. <br />
             <br />
@@ -38,6 +32,7 @@ export default function About() {
             This team was responsible of implementing a user-friendly and
             intuitive Web application that allows the user to synthesize a
             personalized text.
+
           </p>
           <img src={webdev_img} alt="web-development" width={100} />
         </div>
@@ -46,6 +41,7 @@ export default function About() {
         <div className="card">
           <b style={{ fontSize: '18px' }}>TTS & Back-end Team</b>
           <p>
+
             The TTS and Back-end team is constituted by: <br />
             Raquel Panadero, Javier Fernández and Emiliano Macías. <br />
             <br />
@@ -62,6 +58,7 @@ export default function About() {
         <div className="card">
           <b style={{ fontSize: '18px' }}>Database Team</b>
           <p>
+
             The Database team is constituted by: <br />
             Lluc Ricart, Pablo Mecho and Helena Fitó. <br />
             <br />
