@@ -1,0 +1,16 @@
+.tech-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  display: grid;
+  justify-content: center;
+  margin: 30px
+}
+
+.tech01 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 2;
+  grid-row: 1; 
+  text-align: center;
+}
