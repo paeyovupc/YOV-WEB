@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { hashCode } from '../utils';
 
 export default function Login({ setUser }) {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Login({ setUser }) {
     } else {
       const formData = new FormData();
       formData.append('username', username);
-      formData.append('password', password);
+      formData.append('password', hashCode(password));
       axios
         .post(`${process.env.REACT_APP_API_URL}/login`, formData, {
           headers: {
