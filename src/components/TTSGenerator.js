@@ -14,6 +14,7 @@ export default function TTSGenerator({ user }) {
   });
   const [text, setText] = useState('');
   const [file, setFile] = useState(null);
+  const [multispeaker_lang, setMultiLang] = useState('en');
   const [audioUrl, setAudioUrl] = useState(null);
   const [loader, setLoader] = useState(false);
 
@@ -24,7 +25,7 @@ export default function TTSGenerator({ user }) {
 
     async function getModels() {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/all_models?user=${user}`
+        `${process.env.REACT_APP_API_URL}/all-models?user=${user}`
       );
       setModels(response.data);
     }
@@ -41,6 +42,8 @@ export default function TTSGenerator({ user }) {
     formData.append('dataset', data.dataset);
     formData.append('model_name', data.model_name);
     formData.append('text', data.text);
+    formData.append('multispeaker_lang', multispeaker_lang);
+    console.log(formData);
     axios
       .post(`${process.env.REACT_APP_API_URL}/tts`, formData, {
         responseType: 'blob'
@@ -48,6 +51,8 @@ export default function TTSGenerator({ user }) {
       .then((res) => {
         const url = URL.createObjectURL(res.data);
         setLoader(false);
+        setMultiLang('en');
+        setFile(null);
         setAudioUrl(url);
       });
   };
@@ -185,16 +190,28 @@ export default function TTSGenerator({ user }) {
             </select>
           </label>
           {model.model_name === 'your_tts' && (
-            <label>
-              Upload your own voice:
-              <div>
-                <input
-                  type="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ fontSize: '15px' }}
-                />
-              </div>
-            </label>
+            <div>
+              <label>
+                Upload your own voice:
+                <div>
+                  <input
+                    type="file"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    style={{ fontSize: '15px' }}
+                  />
+                </div>
+              </label>
+              <br />
+              <label>
+                Choose the language:
+                <div onChange={(e) => setMultiLang(e.target.value)}>
+                  <input type="radio" value="en" name="gender" /> English
+                  <input type="radio" value="fr-fr" name="gender" /> French
+                  <input type="radio" value="pt-br" name="gender" /> Portuguese
+                  (Brazil)
+                </div>
+              </label>
+            </div>
           )}
           <div className="block">
             <span>Enter some text to generate speech:</span>
