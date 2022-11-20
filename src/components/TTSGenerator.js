@@ -205,10 +205,10 @@ export default function TTSGenerator({ user }) {
               <label>
                 Choose the language:
                 <div onChange={(e) => setMultiLang(e.target.value)}>
-                  <input type="radio" value="en" name="gender" /> English
-                  <input type="radio" value="fr-fr" name="gender" /> French
-                  <input type="radio" value="pt-br" name="gender" /> Portuguese
-                  (Brazil)
+                  <input type="radio" value="en" name="language" /> English
+                  <input type="radio" value="fr-fr" name="language" /> French
+                  <input type="radio" value="pt-br" name="language" />{' '}
+                  Portuguese (Brazil)
                 </div>
               </label>
             </div>
