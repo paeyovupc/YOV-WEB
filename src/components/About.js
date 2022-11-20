@@ -10,17 +10,16 @@ export default function About() {
       <div className="about01">
         <span className="subtitle">About Us</span>
       </div>
-      <div className="about02">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum." "Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
+      <div className="about02" style={{ fontSize: '18px' }}>
+        We are a team of students at Universitat Politècnica de Catalunya
+        (ETSETB), pursuing a Bachelor's degree in ICT. The main goal of this
+        project is to extend the current open-source TTS technology so that it
+        can generate good quality voices in Catalan (among other languages). As
+        a secondary objective of the project, the goal is to develop and
+        implement a TTS technology to create personalized voices with few
+        resources (economic and time wise) and on the fly. These personalized
+        voices are created by uploading new audio recordings and based on
+        pre-trained models designed for this specific purpose.
       </div>
       <div className="about03">
         <span className="subtitle">Our Team</span>
@@ -68,8 +67,9 @@ export default function About() {
             The technologies used are Python, data bases with at least 1 hour of
             data to be able record a new voice with the same frases. <br />
             <br />
-            This team is responsible of making the audio data base available to
-            work for TTS.
+            This team is responsible of making our own audio database available
+            to work for TTS and normalize any other database used on this
+            project.
           </p>
           <img src={database_img} alt="database" width={100} />
         </div>
