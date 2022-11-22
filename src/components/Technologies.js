@@ -63,8 +63,14 @@ export default function Technologies() {
           <img src={coquitts_img} alt="CoquiTTS" height={60} />
           <p style={{ textAlign: 'justify' }}>
             We extended the current open-source TTS technology to obtain
-            high-quality models in Catalan using CoquiTTS, a library for
-            advanced Text-to-Speech generation.
+            high-quality models in Catalan using{' '}
+            <a
+              href="https://github.com/coqui-ai/TTS"
+              style={{ color: 'white' }}
+            >
+              CoquiTTS
+            </a>
+            , a deep learning library for advanced Text-to-Speech generation.
             <br />
             <br />
             We also used the pretrained models in 20+ languages and tools for
@@ -101,15 +107,23 @@ export default function Technologies() {
         <div className="card" style={cardStyle}>
           <b style={subtitleStyle}>Bash</b>
           <img src={bash_img} alt="Bash" height={60} />
-          <p>Texto</p>
+          <p style={{ textAlign: 'justify' }}>
+            We used Bash+SoX for database normalization. The normalization
+            consists in converting to mono, level normalization, triming the
+            silence at beginninigs and endings, and filtering the audios by
+            length.
+            <br />
+            <br />
+            We also used some bash scripts to reformat and fix metadata files.
+          </p>
         </div>
       </div>
       More info:
-      <table style={{ margin: '15px' }}>
+      <table style={{ margin: '15px', borderSpacing: '80px 0' }}>
         <thead style={{ fontWeight: 'bold' }}>
           <tr>
             <td>Links to databases</td>
-            <td>Links to Python scripts</td>
+            <td>Links to important scripts</td>
           </tr>
         </thead>
         <tbody>
@@ -138,6 +152,14 @@ export default function Technologies() {
                 style={{ color: 'white' }}
               >
                 - OpenSLR Male (CAT) [767M]
+              </a>
+            </td>
+            <td>
+              <a
+                href="https://github.com/raquelpanapalen/PAE-YOV/blob/main/scripts/normalize_db.sh"
+                style={{ color: 'white' }}
+              >
+                - Bash script to normalize audios
               </a>
             </td>
           </tr>

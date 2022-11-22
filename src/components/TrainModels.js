@@ -41,6 +41,34 @@ export default function TrainModels({ user }) {
       });
   };
 
+  const getZipStructure = () => {
+    return (
+      <div
+        style={{
+          background: 'rgba(155, 155, 155, 0.5)',
+          width: 'max-content',
+          borderRadius: '10px',
+          padding: '10px',
+          marginTop: '10px'
+        }}
+      >
+        my_database.zip
+        <br />│
+        <br />
+        └── my_database
+        <div style={{ marginLeft: '35px' }}>
+          │<br />
+          ├── wavfile01.wav
+          <br />
+          ├── wavfile01.wav
+          <br />│ ... <br />
+          ├── wavfileN.wav <br />
+          └── metadata.txt
+        </div>
+      </div>
+    );
+  };
+
   const getModelDetails = (model) => {
     const model_name = Object.keys(model)[0];
     const status = model[model_name]['status'];
@@ -136,7 +164,16 @@ export default function TrainModels({ user }) {
             <button className="button" onClick={trainModel}>
               Upload!
             </button>
-            <p>Note: The database name corresponds to the .zip filename</p>
+            <p>
+              Notes: <br />- The database name corresponds to the .zip filename
+              <br />
+              - The .zip file must contain a folder with the same database name
+              <br />- The database folder must contain all audios and metadata
+              file. <br />
+              <br />
+              Example:
+              {getZipStructure()}
+            </p>
           </div>
         </div>
       </div>
