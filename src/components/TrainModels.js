@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FcOk, FcHighPriority, FcSynchronize, FcList } from 'react-icons/fc';
+import { MdCloudUpload } from 'react-icons/md';
 import axios from 'axios';
 import { languages } from '../utils';
 
@@ -38,6 +39,28 @@ export default function TrainModels({ user }) {
       })
       .then((res) => {
         setModels((prevModels) => [...prevModels, res.data]);
+      });
+  };
+
+  const onChangeFile = async (e) => {
+    const file = e.target.files[0];
+    axios
+      .get(
+        `${
+          process.env.REACT_APP_API_URL
+        }/check-database-name?username=${user}&db_name=${
+          file.name.split('.')[0]
+        }`
+      )
+      .then((res) => {
+        if (res.data.check === 'OK') {
+          setFile(file);
+        } else {
+          setFile(null);
+          alert(
+            'The database name is already used. Choose another database name.'
+          );
+        }
       });
   };
 
@@ -139,15 +162,18 @@ export default function TrainModels({ user }) {
         <div className="card" style={{ width: '55%' }}>
           <b style={{ fontSize: '20px' }}>Train new model</b>
           <div style={{ marginTop: '20px' }}>
-            <label>
-              Upload your database:{' '}
+            <label className="custom-file-upload">
+              <MdCloudUpload />
+              <span style={{ marginLeft: '5px' }}>
+                {file === null ? 'Upload your database' : file.name}
+              </span>
               <input
-                style={{ fontSize: '15px' }}
                 type="file"
-                onChange={(e) => setFile(e.target.files[0])}
+                className="inputfile"
+                onChange={(e) => onChangeFile(e)}
+                hidden
               />
             </label>
-            <br />
             <label>
               Language:
               <select
@@ -164,7 +190,7 @@ export default function TrainModels({ user }) {
             <button className="button" onClick={trainModel}>
               Upload!
             </button>
-            <p>
+            <div>
               Notes: <br />- The database name corresponds to the .zip filename
               <br />
               - The .zip file must contain a folder with the same database name
@@ -173,7 +199,7 @@ export default function TrainModels({ user }) {
               <br />
               Example:
               {getZipStructure()}
-            </p>
+            </div>
           </div>
         </div>
       </div>
