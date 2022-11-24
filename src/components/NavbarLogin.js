@@ -24,6 +24,8 @@ export default function NavbarLogin({ user }) {
       <ul>
         <CustomLink to="/tts-generator">TTS Generator</CustomLink>
         <CustomLink to="/train-models">Train models</CustomLink>
+        <CustomLink to="/about">About Us</CustomLink>
+        <CustomLink to="/technologies-used">Technologies Used</CustomLink>
         <div
           ref={dropLogOut}
           style={{
