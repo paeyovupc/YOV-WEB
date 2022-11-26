@@ -36,7 +36,7 @@ export default function CreateUser({ setUser }) {
             setUser(username);
             navigate('/tts-generator');
           } else {
-            alert('OOPS! Something went wrong');
+            alert(res.data.message);
           }
         });
     }

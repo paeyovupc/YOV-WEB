@@ -12,6 +12,9 @@ export default function TTSGenerator({ user }) {
     dataset: '',
     model_name: ''
   });
+  const [languageList, setLanguageList] = useState([]);
+  const [datasetList, setDatasetList] = useState([]);
+  const [modelList, setModelList] = useState([]);
   const [text, setText] = useState('');
   const [file, setFile] = useState(null);
   const [multispeaker_lang, setMultiLang] = useState('en');
@@ -27,7 +30,9 @@ export default function TTSGenerator({ user }) {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/all-models?user=${user}`
       );
-      setModels(response.data);
+      const models = response.data;
+      setModels(models);
+      setLanguageList([...new Set(models.map((item) => item.language))]);
     }
     getModels();
   }, [navigate, user]);
@@ -64,31 +69,56 @@ export default function TTSGenerator({ user }) {
     element.click();
   };
 
+  const getPossibleDatasets = (language) => [
+    ...new Set(
+      models.filter((m) => m.language === language).map((m) => m.dataset)
+    )
+  ];
+
+  const getPossibleModels = (language, dataset) => [
+    ...new Set(
+      models
+        .filter((m) => m.language === language && m.dataset === dataset)
+        .map((m) => m.model_name)
+    )
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setModel((prevState) => {
       let new_model = {};
-      switch (name) {
-        case 'language':
-          new_model = {
-            language: value,
-            dataset: '',
-            model_name: ''
-          };
-          break;
-        case 'dataset':
-          new_model = {
-            ...prevState,
-            dataset: value,
-            model_name: ''
-          };
-          break;
-        default:
-          new_model = {
-            ...prevState,
-            model_name: value
-          };
-          break;
+      if (name === 'language') {
+        new_model = {
+          language: value,
+          dataset: '',
+          model_name: ''
+        };
+        const datasets = getPossibleDatasets(value);
+        setDatasetList(datasets);
+        if (datasets.length === 1) {
+          new_model.dataset = datasets[0];
+          const models_list = getPossibleModels(value, new_model.dataset);
+          setModelList(models_list);
+          if (models_list.length === 1) {
+            new_model.model_name = models_list[0];
+          }
+        }
+      } else if (name === 'dataset') {
+        new_model = {
+          ...prevState,
+          dataset: value,
+          model_name: ''
+        };
+        const models_list = getPossibleModels(new_model.language, value);
+        setModelList(models_list);
+        if (models_list.length === 1) {
+          new_model.model_name = models_list[0];
+        }
+      } else {
+        new_model = {
+          ...prevState,
+          model_name: value
+        };
       }
       return new_model;
     });
@@ -115,9 +145,6 @@ export default function TTSGenerator({ user }) {
     e.preventDefault();
   };
 
-  const languages = [...new Set(models.map((item) => item.language))];
-  const datasets = [...new Set(models.map((item) => item.dataset))];
-  const model_names = [...new Set(models.map((item) => item.model_name))];
   return (
     <div className="block">
       <div className="subtitle">Text-to-speech generator</div>
@@ -141,7 +168,7 @@ export default function TTSGenerator({ user }) {
               onChange={handleChange}
             >
               <option value={undefined} />
-              {languages.map((language, index) => (
+              {languageList.map((language, index) => (
                 <option key={index}>{language}</option>
               ))}
             </select>
@@ -155,15 +182,9 @@ export default function TTSGenerator({ user }) {
               onChange={handleChange}
             >
               <option value={undefined} />
-              {datasets
-                .filter((d) =>
-                  models.some(
-                    (m) => m.language === model.language && m.dataset === d
-                  )
-                )
-                .map((dataset, index) => (
-                  <option key={index}>{dataset}</option>
-                ))}
+              {datasetList.map((dataset, index) => (
+                <option key={index}>{dataset}</option>
+              ))}
             </select>
           </label>
           <br />
@@ -175,18 +196,9 @@ export default function TTSGenerator({ user }) {
               onChange={handleChange}
             >
               <option value={undefined} />
-              {model_names
-                .filter((name) =>
-                  models.some(
-                    (m) =>
-                      m.language === model.language &&
-                      m.dataset === model.dataset &&
-                      m.model_name === name
-                  )
-                )
-                .map((name, index) => (
-                  <option key={index}>{name}</option>
-                ))}
+              {modelList.map((name, index) => (
+                <option key={index}>{name}</option>
+              ))}
             </select>
           </label>
           {model.model_name === 'your_tts' && (
