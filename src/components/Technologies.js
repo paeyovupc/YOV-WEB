@@ -69,7 +69,13 @@ export default function Technologies() {
               style={{ color: 'white' }}
             >
               CoquiTTS
-            </a>
+            </a>{' '}
+            <a
+              href="https://arxiv.org/pdf/2106.06103.pdf"
+              style={{ color: 'white' }}
+            >
+              (Vits model)
+            </a>{' '}
             , a deep learning library for advanced Text-to-Speech generation.
             <br />
             <br />
