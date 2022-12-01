@@ -32,7 +32,7 @@ export default function TTSGenerator({ user }) {
       );
       const models = response.data;
       setModels(models);
-      setLanguageList([...new Set(models.map((item) => item.language))]);
+      setLanguageList([...new Set(models.map((item) => item.language))].sort());
     }
     getModels();
   }, [navigate, user]);
@@ -95,11 +95,11 @@ export default function TTSGenerator({ user }) {
           model_name: ''
         };
         const datasets = getPossibleDatasets(value);
-        setDatasetList(datasets);
+        setDatasetList(datasets.sort());
         if (datasets.length === 1) {
           new_model.dataset = datasets[0];
           const models_list = getPossibleModels(value, new_model.dataset);
-          setModelList(models_list);
+          setModelList(models_list.sort());
           if (models_list.length === 1) {
             new_model.model_name = models_list[0];
           }
@@ -111,7 +111,7 @@ export default function TTSGenerator({ user }) {
           model_name: ''
         };
         const models_list = getPossibleModels(new_model.language, value);
-        setModelList(models_list);
+        setModelList(models_list.sort());
         if (models_list.length === 1) {
           new_model.model_name = models_list[0];
         }
