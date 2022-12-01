@@ -17,7 +17,7 @@ export const languages = {
   bosnian: 'bs',
   brazil: 'pt-br',
   bulgarian: 'bg',
-  cantonese: 'zh-yue'
+  cantonese: 'zh-yue',
   catalan: 'ca',
   croatian: 'hr',
   czech: 'cs',
@@ -77,5 +77,5 @@ export const languages = {
   vietnam: 'vi',
   vietnam_hue: 'vi-hue',
   vietnam_sgn: 'vi-sgn',
-  welsh: 'cy',
+  welsh: 'cy'
 };
