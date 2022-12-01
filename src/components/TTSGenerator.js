@@ -48,6 +48,7 @@ export default function TTSGenerator({ user }) {
     formData.append('model_name', data.model_name);
     formData.append('text', data.text);
     formData.append('multispeaker_lang', multispeaker_lang);
+    formData.append('user', user);
     console.log(formData);
     axios
       .post(`${process.env.REACT_APP_API_URL}/tts`, formData, {

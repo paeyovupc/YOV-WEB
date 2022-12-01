@@ -116,7 +116,7 @@ export default function Technologies() {
           <p style={{ textAlign: 'justify' }}>
             We used Bash+SoX for database normalization. The normalization
             consists in converting to mono, level normalization, triming the
-            silence at beginninigs and endings, and filtering the audios by
+            silence at beginnings and endings, and filtering the audios by
             length.
             <br />
             <br />
