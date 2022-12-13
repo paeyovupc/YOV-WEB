@@ -83,7 +83,7 @@ export default function TrainModels({ user }) {
           │<br />
           ├── wavfile01.wav
           <br />
-          ├── wavfile01.wav
+          ├── wavfile02.wav
           <br />│ ... <br />
           ├── wavfileN.wav <br />
           └── metadata.txt
