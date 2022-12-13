@@ -1,0 +1,12 @@
+[Unit]
+Description=YoV backend
+After=network.target
+
+[Service]
+User=user
+Restart=on-failure
+WorkingDirectory=/home/user/PAE-YOV/TTS/api
+ExecStart=/home/user/PAE-YOV/.yov-venv/bin/uvicorn main:app
+
+[Install]
+WantedBy=multi-user.target
