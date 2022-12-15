@@ -1,12 +1,13 @@
-import React from 'react';
-import axios from 'axios';
-import coquitts_img from '../images/coquiTTS.png';
-import react_img from '../images/react.png';
-import python_img from '../images/python.png';
-import bash_img from '../images/bash.png';
+import React from "react";
+//import axios from "axios";
+import coquitts_img from "../images/coquiTTS.png";
+import react_img from "../images/react.png";
+import python_img from "../images/python.png";
+import bash_img from "../images/bash.png";
 
 export default function Technologies() {
-  const downloadHelenaDB = () => {
+  // DEPRACATED. We are not using this.
+  /*const downloadHelenaDB = () => {
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/get-database?name=helena_cat`,
@@ -30,52 +31,52 @@ export default function Technologies() {
         link.click();
         URL.revokeObjectURL(url);
       });
-  };
+  };*/
 
   const cardStyle = {
-    width: '25%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
+    width: "25%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   };
 
   const subtitleStyle = {
-    fontSize: '20px',
-    marginBottom: '15px'
+    fontSize: "20px",
+    marginBottom: "15px",
   };
 
   return (
     <div className="block">
-      <div className="about01" style={{ marginTop: '25px' }}>
+      <div className="about01" style={{ marginTop: "25px" }}>
         <span className="subtitle">Technologies Used</span>
       </div>
       <div
         className="models-grid"
         style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          margin: '50px',
-          width: '80%'
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "50px",
+          width: "80%",
         }}
       >
         <div className="card" style={cardStyle}>
           <b style={subtitleStyle}>CoquiTTS</b>
           <img src={coquitts_img} alt="CoquiTTS" height={60} />
-          <p style={{ textAlign: 'justify' }}>
+          <p style={{ textAlign: "justify" }}>
             We extended the current open-source TTS technology to obtain
-            high-quality models in Catalan using{' '}
+            high-quality models in Catalan using{" "}
             <a
               href="https://github.com/coqui-ai/TTS"
-              style={{ color: 'white' }}
+              style={{ color: "white" }}
             >
               CoquiTTS
-            </a>{' '}
+            </a>{" "}
             <a
               href="https://arxiv.org/pdf/2106.06103.pdf"
-              style={{ color: 'white' }}
+              style={{ color: "white" }}
             >
               (Vits model)
-            </a>{' '}
+            </a>{" "}
             , a deep learning library for advanced Text-to-Speech generation.
             <br />
             <br />
@@ -86,7 +87,7 @@ export default function Technologies() {
         <div className="card" style={cardStyle}>
           <b style={subtitleStyle}>React</b>
           <img src={react_img} alt="React" height={60} />
-          <p style={{ textAlign: 'justify' }}>
+          <p style={{ textAlign: "justify" }}>
             We used React to create this interactive web application so that
             clients can easily register and train their own models. React is a
             free and open-source JavaScript library for building user interfaces
@@ -99,7 +100,7 @@ export default function Technologies() {
         <div className="card" style={cardStyle}>
           <b style={subtitleStyle}>Python</b>
           <img src={python_img} alt="Python" height={60} />
-          <p style={{ textAlign: 'justify' }}>
+          <p style={{ textAlign: "justify" }}>
             We developed an API to answer user requests using FastAPI. FastAPI
             is a modern, fast (high-performance), web framework for building
             APIs with Python 3.7+.
@@ -113,7 +114,7 @@ export default function Technologies() {
         <div className="card" style={cardStyle}>
           <b style={subtitleStyle}>Bash</b>
           <img src={bash_img} alt="Bash" height={60} />
-          <p style={{ textAlign: 'justify' }}>
+          <p style={{ textAlign: "justify" }}>
             We used Bash+SoX for database normalization. The normalization
             consists in converting to mono, level normalization, triming the
             silence at beginnings and endings, and filtering the audios by
@@ -125,8 +126,8 @@ export default function Technologies() {
         </div>
       </div>
       More info:
-      <table style={{ margin: '15px', borderSpacing: '80px 0' }}>
-        <thead style={{ fontWeight: 'bold' }}>
+      <table style={{ margin: "15px", borderSpacing: "80px 0" }}>
+        <thead style={{ fontWeight: "bold" }}>
           <tr>
             <td>Links to databases</td>
             <td>Links to important scripts</td>
@@ -137,7 +138,7 @@ export default function Technologies() {
             <td>
               <a
                 href="https://www.openslr.org/resources/69/"
-                style={{ color: 'white' }}
+                style={{ color: "white" }}
               >
                 - OpenSLR Female (CAT) [1.0G]
               </a>
@@ -145,7 +146,7 @@ export default function Technologies() {
             <td>
               <a
                 href="https://github.com/raquelpanapalen/PAE-YOV/blob/main/scripts/record_audio.py"
-                style={{ color: 'white' }}
+                style={{ color: "white" }}
               >
                 - Python script to record audios
               </a>
@@ -155,7 +156,7 @@ export default function Technologies() {
             <td>
               <a
                 href="https://www.openslr.org/resources/69/"
-                style={{ color: 'white' }}
+                style={{ color: "white" }}
               >
                 - OpenSLR Male (CAT) [767M]
               </a>
@@ -163,7 +164,7 @@ export default function Technologies() {
             <td>
               <a
                 href="https://github.com/raquelpanapalen/PAE-YOV/blob/main/scripts/normalize_db.sh"
-                style={{ color: 'white' }}
+                style={{ color: "white" }}
               >
                 - Bash script to normalize audios
               </a>
@@ -173,7 +174,7 @@ export default function Technologies() {
             <td>
               <a
                 href="https://keithito.com/LJ-Speech-Dataset/"
-                style={{ color: 'white' }}
+                style={{ color: "white" }}
               >
                 - LJ Speech Dataset (EN) [2.6G]
               </a>
@@ -182,8 +183,8 @@ export default function Technologies() {
           <tr>
             <td>
               <a
-                onClick={downloadHelenaDB}
-                style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                href="https://github.com/raquelpanapalen/PAE-YOV/blob/main/databases/helena_cat.zip"
+                style={{ color: "white" }}
               >
                 - Our own database Female (CAT) [4.3M]
               </a>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FcOk, FcHighPriority, FcSynchronize, FcList } from 'react-icons/fc';
-import { MdCloudUpload } from 'react-icons/md';
-import axios from 'axios';
-import { languages } from '../utils';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FcOk, FcHighPriority, FcSynchronize, FcList } from "react-icons/fc";
+import { MdCloudUpload } from "react-icons/md";
+import axios from "axios";
+import { languages } from "../utils";
 
 export default function TrainModels({ user }) {
   const language_list = Object.keys(languages);
@@ -14,7 +14,7 @@ export default function TrainModels({ user }) {
 
   useEffect(() => {
     if (user == null) {
-      navigate('/login');
+      navigate("/login");
     }
 
     async function getUsersModels() {
@@ -28,14 +28,14 @@ export default function TrainModels({ user }) {
 
   const trainModel = () => {
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('user', user);
-    formData.append('language', languages[language]);
+    formData.append("file", file);
+    formData.append("user", user);
+    formData.append("language", languages[language]);
     axios
       .post(`${process.env.REACT_APP_API_URL}/train-model`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       })
       .then((res) => {
         setModels((prevModels) => [...prevModels, res.data]);
@@ -49,16 +49,16 @@ export default function TrainModels({ user }) {
         `${
           process.env.REACT_APP_API_URL
         }/check-database-name?username=${user}&db_name=${
-          file.name.split('.')[0]
+          file.name.split(".")[0]
         }`
       )
       .then((res) => {
-        if (res.data.check === 'OK') {
+        if (res.data.check === "OK") {
           setFile(file);
         } else {
           setFile(null);
           alert(
-            'The database name is already used. Choose another database name.'
+            "The database name is already used. Choose another database name."
           );
         }
       });
@@ -68,18 +68,19 @@ export default function TrainModels({ user }) {
     return (
       <div
         style={{
-          background: 'rgba(155, 155, 155, 0.5)',
-          width: 'max-content',
-          borderRadius: '10px',
-          padding: '10px',
-          marginTop: '10px'
+          background: "rgba(155, 155, 155, 0.5)",
+          width: "max-content",
+          borderRadius: "10px",
+          padding: "10px",
+          marginTop: "5px",
+          marginBottom: "15px",
         }}
       >
         my_database.zip
         <br />│
         <br />
         └── my_database
-        <div style={{ marginLeft: '35px' }}>
+        <div style={{ marginLeft: "35px" }}>
           │<br />
           ├── wavfile01.wav
           <br />
@@ -94,40 +95,40 @@ export default function TrainModels({ user }) {
 
   const getModelDetails = (model) => {
     const model_name = Object.keys(model)[0];
-    const status = model[model_name]['status'];
-    const progress = model[model_name]['progress'];
+    const status = model[model_name]["status"];
+    const progress = model[model_name]["progress"];
 
     return (
-      <div style={{ display: 'flex', marginBottom: '10px' }} key={model_name}>
-        <li style={{ fontSize: '16px', marginRight: '10px' }}>
+      <div style={{ display: "flex", marginBottom: "10px" }} key={model_name}>
+        <li style={{ fontSize: "16px", marginRight: "10px" }}>
           {model_name} →
         </li>
-        {status === 'finished' && (
+        {status === "finished" && (
           <>
             <FcOk />
-            <span style={{ marginLeft: '5px', color: 'green' }}>Finished</span>
+            <span style={{ marginLeft: "5px", color: "green" }}>Finished</span>
           </>
         )}
-        {status === 'running' && (
+        {status === "running" && (
           <>
             <FcSynchronize />
-            <span style={{ marginLeft: '5px', color: 'rgb(216, 95, 8)' }}>
+            <span style={{ marginLeft: "5px", color: "rgb(216, 95, 8)" }}>
               Running: {progress}%
             </span>
           </>
         )}
-        {status === 'queued' && (
+        {status === "queued" && (
           <>
             <FcList />
-            <span style={{ marginLeft: '5px', color: 'dodgerblue' }}>
+            <span style={{ marginLeft: "5px", color: "dodgerblue" }}>
               Queued
             </span>
           </>
         )}
-        {status === 'error' && (
+        {status === "error" && (
           <>
             <FcHighPriority />
-            <span style={{ marginLeft: '5px', color: 'red' }}>Error</span>
+            <span style={{ marginLeft: "5px", color: "red" }}>Error</span>
           </>
         )}
       </div>
@@ -144,14 +145,14 @@ export default function TrainModels({ user }) {
       <div
         className="models-grid"
         style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          margin: '50px',
-          width: '80%'
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "50px",
+          width: "80%",
         }}
       >
-        <div className="card" style={{ width: '45%' }}>
-          <b style={{ fontSize: '20px' }}>Your current models</b>
+        <div className="card" style={{ width: "45%" }}>
+          <b style={{ fontSize: "20px" }}>Your current models</b>
           {models.length !== 0 && (
             <ul>{models.map((model) => getModelDetails(model))}</ul>
           )}
@@ -159,13 +160,13 @@ export default function TrainModels({ user }) {
             <p>[INFO]: Currently, you have no personalized models trained</p>
           )}
         </div>
-        <div className="card" style={{ width: '55%' }}>
-          <b style={{ fontSize: '20px' }}>Train new model</b>
-          <div style={{ marginTop: '20px' }}>
+        <div className="card" style={{ width: "55%" }}>
+          <b style={{ fontSize: "20px" }}>Train new model</b>
+          <div style={{ marginTop: "20px" }}>
             <label className="custom-file-upload">
               <MdCloudUpload />
-              <span style={{ marginLeft: '5px' }}>
-                {file === null ? 'Upload your database' : file.name}
+              <span style={{ marginLeft: "5px" }}>
+                {file === null ? "Upload your database" : file.name}
               </span>
               <input
                 type="file"
@@ -195,10 +196,29 @@ export default function TrainModels({ user }) {
               <br />
               - The .zip file must contain a folder with the same database name
               <br />- The database folder must contain all audios and metadata
-              file. <br />
-              <br />
+              file. <br /> - The metadata file must have the following format
+              <div
+                style={{
+                  background: "rgba(155, 155, 155, 0.5)",
+                  width: "max-content",
+                  borderRadius: "10px",
+                  padding: "2px",
+                  marginBottom: "10px",
+                }}
+              >
+                {
+                  "<wav_file_name_without_extension>|<Transcription of WAV file>"
+                }
+              </div>
               Example:
               {getZipStructure()}
+              For more info on how to create your own database follow this{" "}
+              <a
+                href="https://github.com/raquelpanapalen/PAE-YOV/tree/main/databases#databases"
+                style={{ color: "white" }}
+              >
+                link
+              </a>
             </div>
           </div>
         </div>
