@@ -1,12 +1,12 @@
 [Unit]
-Description=YoV backend
+Description=YoV Webapp API
 After=network.target
 
 [Service]
-User=user
+User=veus
 Restart=on-failure
-WorkingDirectory=/home/user/PAE-YOV/TTS/api
-ExecStart=/home/user/PAE-YOV/.yov-venv/bin/uvicorn main:app
+WorkingDirectory=/elara/harpo/veus/PAE-YOV/TTS/api
+ExecStart=/elara/harpo/veus/PAE-YOV/.yov-venv/bin/uvicorn main:app
 
 [Install]
 WantedBy=multi-user.target
