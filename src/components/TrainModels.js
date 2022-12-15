@@ -10,6 +10,8 @@ export default function TrainModels({ user }) {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [language, setLanguage] = useState(undefined);
+  const [fineTuning, setFineTuning] = useState(false);
+  const [gender, setGender] = useState(null);
   const [models, setModels] = useState([]);
 
   useEffect(() => {
@@ -31,6 +33,8 @@ export default function TrainModels({ user }) {
     formData.append("file", file);
     formData.append("user", user);
     formData.append("language", languages[language]);
+    formData.append("voice_type", gender);
+
     axios
       .post(`${process.env.REACT_APP_API_URL}/train-model`, formData, {
         headers: {
@@ -175,24 +179,50 @@ export default function TrainModels({ user }) {
                 hidden
               />
             </label>
-            <label>
-              Language:
-              <select
-                name="language"
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-              >
-                <option value={undefined} />
-                {language_list.map((name, index) => (
-                  <option key={index}>{name}</option>
-                ))}
-              </select>
-            </label>
+            <div>
+              <label>
+                Language:
+                <select
+                  name="language"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                >
+                  <option value={undefined} />
+                  {language_list.map((name, index) => (
+                    <option key={index}>{name}</option>
+                  ))}
+                </select>
+              </label>
+              <input
+                type="checkbox"
+                checked={fineTuning}
+                onChange={() => {
+                  setFineTuning((prevState) => !prevState);
+                  setGender(null);
+                }}
+                value="Fine-Tuning"
+              />
+              <label>Fine-Tuning</label>
+            </div>
+            {fineTuning && (
+              <div>
+                <label>
+                  Type of speaker voice:
+                  <div onChange={(e) => setGender(e.target.value)}>
+                    <input type="radio" value="female" name="gender" /> Female
+                    Voice
+                    <input type="radio" value="male" name="gender" /> Male Voice
+                  </div>
+                </label>
+              </div>
+            )}
             <button className="button" onClick={trainModel}>
               Upload!
             </button>
-            <div>
-              Notes: <br />- The database name corresponds to the .zip filename
+            <div style={{ marginTop: "20px" }}>
+              Notes:
+              <br />- For a 5-10 minute database select the fine tuning option.
+              <br />- The database name corresponds to the .zip filename
               <br />
               - The .zip file must contain a folder with the same database name
               <br />- The database folder must contain all audios and metadata
