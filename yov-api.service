@@ -3,10 +3,10 @@ Description=YoV Webapp API
 After=network.target
 
 [Service]
-User=veus
+User=user
 Restart=on-failure
-WorkingDirectory=/elara/harpo/veus/PAE-YOV/TTS/api
-ExecStart=/elara/harpo/veus/PAE-YOV/.yov-venv/bin/uvicorn main:app
+WorkingDirectory=/home/user/PAE-YOV/TTS/api
+ExecStart=/home/user/PAE-YOV/.yov-venv/bin/uvicorn --host 127.0.0.1 --port 8000 --workers 6 --env-file /home/user/PAE-YOV/.env --log-config /home/user/PAE-YOV/YOV-WEB/logconf.ini  --access-log --no-use-colors main:app
 
 [Install]
 WantedBy=multi-user.target
